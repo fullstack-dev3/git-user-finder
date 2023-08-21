@@ -16,6 +16,8 @@ async function getUser(username)
     const result = await response.json();
 
     createUserCard(result, repos);
+  } else {
+    createEmptyCard(username);
   }
 }
 
@@ -78,6 +80,15 @@ function createUserCard(user, repos)
         repos +
       `</div>
     </div>`;
+
+  main.innerHTML = cardHTML;
+}
+
+function createEmptyCard(username) {
+  const cardHTML =
+    `<div class = "card">
+      <h2>Whoops! ${username} is not exist.</h2>
+    </div>`
 
   main.innerHTML = cardHTML;
 }
